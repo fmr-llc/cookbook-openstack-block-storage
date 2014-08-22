@@ -593,6 +593,18 @@ volume_driver=<%= node["openstack"]["block-storage"]["volume"]["driver"] %>
 #### (BoolOpt) if True will force update capabilities on each check
 
 
+######## defined in cinder.volume.san ########
+
+<% if @enabled_drivers.include?("cinder.volume.drivers.xenapi.sm.XenAPINFSDriver") %>
+xenapi_connection_url=<%= node["openstack"]["block-storage"]["xenapi"]["connection_url"] %>
+xenapi_connection_username=<%= node["openstack"]["block-storage"]["xenapi"]["connection_username"] %>
+xenapi_connection_password=<%= @xenapi_pass %>
+xenapi_nfs_server=<%= node["openstack"]["block-storage"]["xenapi"]["nfs_server"] %>
+xenapi_nfs_serverpath=<%= node["openstack"]["block-storage"]["xenapi"]["nfs_serverpath"] %>
+xenapi_sr_base_path=<%= node["openstack"]["block-storage"]["xenapi"]["xenapi_sr_base_path"] %>
+<% end %>
+
+
 ######## defined in cinder.volume.netapp ########
 
 <% if @enabled_drivers.include?("cinder.volume.drivers.netapp.NetAppISCSIDriver") %>

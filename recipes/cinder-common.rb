@@ -52,6 +52,8 @@ when 'cinder.volume.drivers.ibm.ibmnas.IBMNAS_NFSDriver'
   ibmnas_pass = get_password 'user', node['openstack']['block-storage']['ibmnas']['nas_login']
 when 'cinder.volume.drivers.vmware.vmdk.VMwareVcVmdkDriver'
   vmware_host_pass = get_secret node['openstack']['block-storage']['vmware']['secret_name']
+when 'cinder.volume.drivers.xenapi.sm.XenAPINFSDriver'
+  xenapi_pass = get_password 'user', node['openstack']['block-storage']['xenapi']['connection_username']
 end
 
 glance_api_endpoint = endpoint 'image-api'
@@ -98,7 +100,8 @@ template '/etc/cinder/cinder.conf' do
     volume_api_bind_port: cinder_api_bind.port,
     vmware_host_pass: vmware_host_pass,
     enabled_drivers: enabled_drivers,
-    multi_backend_sections: multi_backend_sections
+    multi_backend_sections: multi_backend_sections,
+    xenapi_pass: xenapi_pass
   )
 end
 

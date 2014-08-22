@@ -192,6 +192,14 @@ default['openstack']['block-storage']['ibmnas']['nfs_sparsed_volumes'] = 'true'
 default['openstack']['block-storage']['ibmnas']['nas_access_ip'] = nil
 default['openstack']['block-storage']['ibmnas']['export'] = nil
 
+# XenAPI NFS Support 
+default['openstack']['block-storage']['xenapi']['connection_url'] = ''
+default['openstack']['block-storage']['xenapi']['connection_username'] = ''
+default['openstack']['block-storage']['xenapi']['connection_password'] = ''
+default['openstack']['block-storage']['xenapi']['nfs_server'] = ''
+default['openstack']['block-storage']['xenapi']['nfs_serverpath'] = ''
+default['openstack']['block-storage']['xenapi']['xenapi_sr_base_path'] = '/var/run/sr-mount'
+
 # logging attribute
 default['openstack']['block-storage']['syslog']['use'] = false
 default['openstack']['block-storage']['syslog']['facility'] = 'LOG_LOCAL2'
