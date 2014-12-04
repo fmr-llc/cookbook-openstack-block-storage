@@ -88,6 +88,10 @@ glance_port=<%= @glance_port %>
 # glance_num_retries=0
 #### (IntOpt) Number retries when downloading an image from glance
 
+<% if node["openstack"]["endpoints"]["image-api"]["insecure"] %>
+glance_api_insecure=true
+<% end -%>
+
 # scheduler_topic=cinder-scheduler
 #### (StrOpt) the topic scheduler nodes listen on
 
