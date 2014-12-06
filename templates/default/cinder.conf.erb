@@ -75,7 +75,7 @@ state_path=<%= node["openstack"]["block-storage"]["volume"]["state_path"] %>
 my_ip=<%= node["ipaddress"] %>
 #### (StrOpt) ip address of this host
 
-glance_host=<%= @glance_host %>
+glance_host=<%= node['openstack']['endpoints']['image-api']['scheme'] %>://<%= @glance_host %>
 #### (StrOpt) default glance hostname or ip
 
 glance_port=<%= @glance_port %>
